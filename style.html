@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+
+<div id="app">
+    <div :style="fancyDiv"
+        @mouseover="fancyDiv.padding = '200px'"
+        @mouseout="reset(fancyDiv)">
+        This is js object literal bound to style
+    </div>
+</div>
+
+<script>
+    var myStyle = new Vue({
+       el: '#app',
+       data: {
+           fancyDiv: {
+               backgroundColor: 'lightgray',
+               borderRadius: '10px',
+               padding: '10px',
+               marginTop: '30px'
+           }
+       },
+       methods: {
+           reset: function(obj) {
+               obj['padding'] = holdPadding;
+           }
+       }
+    });
+
+    let holdPadding = myStyle.fancyDiv.padding;
+</script>
